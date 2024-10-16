@@ -1,0 +1,5 @@
+.ipsc-practice-setup-form {
+    .range-slider {
+        width: calc(100% - 3.5rem);
+    }
+}
