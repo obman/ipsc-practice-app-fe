@@ -1,0 +1,23 @@
+version: "3"
+services:
+  ipsc-front:
+    # Use a custom image for nuxt
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: ipsc-front
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./../src/:/home/node/app
+      - /home/node/app/node_modules/
+    #networks:
+    #  - ipsc-be-network
+    command: npm run dev
+
+
+# Docker Networks
+networks:
+  ipsc-be-network:
+    driver: bridge

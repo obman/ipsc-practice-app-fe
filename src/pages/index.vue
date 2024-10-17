@@ -29,9 +29,7 @@
 
     <IPSCPracticeSetupForm @submit="onSubmit" />
 
-    <IPSCPracticeData
-    v-if="practices.length"
-    :practices="practices"/>
+    <IPSCPracticeData v-if="practices.length" :practices="practices" />
   </main>
 </template>
 
@@ -47,23 +45,24 @@ export default Vue.extend({
   layout: 'DefaultLayout',
   data() {
     return {
-      practice: {},
-      practices: [],
-      IPSC: null,
+      practice: {} as { cycles: number, delay: number, delayBetweenShots: number, targetsNumber: number },
+      practices: [] as Array<any>,
+      IPSC: null as IPSC | null
     }
   },
   methods: {
-    async onSubmit(data) {
-      this.practice = data;
-      this.IPSC = new IPSC(this.practice);
+    async onSubmit(data: any) {
+      this.practice = data
+      this.IPSC = new IPSC(this.practice)
+
 
       try {
-        await this.IPSC.speakTargets();
-        this.practices.push(this.IPSC.process);
+        await this.IPSC.speakTargets()
+        this.practices.push(this.IPSC.process)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    }
+    },
   },
 })
 </script>
