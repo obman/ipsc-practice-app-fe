@@ -1,11 +1,10 @@
-version: "3"
 services:
-  ipsc-front:
+  ipsc-fe:
     # Use a custom image for nuxt
     build:
       context: ../
       dockerfile: docker/Dockerfile
-    container_name: ipsc-front
+    container_name: ipsc-fe
     restart: always
     ports:
       - "3000:3000"
