@@ -37,7 +37,7 @@ export default defineComponent({
         v-model="cycles"
         type="number"
         :min="1"
-        class="border border-[#333] rounded px-2 py-1">
+        class="border border-text rounded px-2 py-1">
     </label>
 
     <label
@@ -49,7 +49,7 @@ export default defineComponent({
         v-model="delay"
         type="number"
         :min="0"
-        class="border border-[#333] rounded px-2 py-1">
+        class="border border-text rounded px-2 py-1">
     </label>
 
     <label
@@ -61,7 +61,7 @@ export default defineComponent({
         v-model="delayBetweenShots"
         type="number"
         :min="1"
-        class="border border-[#333] rounded px-2 py-1">
+        class="border border-text rounded px-2 py-1">
     </label>
 
     <label
@@ -87,7 +87,7 @@ export default defineComponent({
 
     <button
       type="submit"
-      class="px-2 py-1 mt-4 border border-[#333] rounded text-[#333] hover:bg-[#333] hover:text-white"
+      class="px-2 py-1 mt-4 border border-text rounded text-text hover:bg-text hover:text-white"
       @submit="onSubmit">START DRILL</button>
   </form>
 </template>

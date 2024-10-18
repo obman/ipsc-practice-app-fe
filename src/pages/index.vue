@@ -1,5 +1,5 @@
 <template>
-  <main class="container p-8 sm:p-12 md:p-24 mx-auto">
+  <section>
     <header class="mb-6">
       <h2 class="text-xl font-bold">Aimbot Drill - Target Acquisition Speed</h2>
       <p>
@@ -30,7 +30,7 @@
     <IPSCPracticeSetupForm @submit="onSubmit" />
 
     <IPSCPracticeData v-if="practices.length" :practices="practices" />
-  </main>
+  </section>
 </template>
 
 <script lang="ts">

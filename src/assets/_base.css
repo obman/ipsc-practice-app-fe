@@ -1,11 +1,18 @@
-:root {
-  --primary-color: #46515a;
-  --secondary-color: #eb9130;
-  --tertiary-color: #393839;
-  --text-color: #333;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-color: #eb9130;
+    --secondary-color: #46515a;
+    --tertiary-color: #393839;
+    --text-color: #535353;
+  }
 }
 
-html {
+html,
+body {
   font-size: 16px;
   line-height: 1.5;
   font-family: 'Nunito', sans-serif;

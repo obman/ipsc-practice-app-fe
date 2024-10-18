@@ -6,13 +6,18 @@ import FrontFooter from '~/components/layouts/front-footer.vue'
 export default defineComponent({
   name: 'DefaultLayout',
   components: { FrontFooter, FrontHeader },
+  head() {
+    return {}
+  }
 })
 </script>
 
 <template>
   <div class="ipsc-practice-app size-full">
     <FrontHeader />
-    <Nuxt />
+    <main class="ipsc-main max-w-[48rem] p-8 sm:p-12 md:p-24 mx-auto">
+      <Nuxt />
+    </main>
     <FrontFooter />
   </div>
 </template>
