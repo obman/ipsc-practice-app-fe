@@ -1,0 +1,12 @@
+.ipsc-header {
+  .ipsc-main-navigation {
+    .nav-item {
+      text-decoration: underline 1px solid transparent;
+      transition: text-decoration-color 0.3s ease-in-out;
+
+      &:hover {
+        text-decoration-color: var(--primary-color);
+      }
+    }
+  }
+}

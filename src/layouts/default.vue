@@ -21,3 +21,5 @@ export default defineComponent({
     <FrontFooter />
   </div>
 </template>
+
+<style src="@/assets/_base.css"></style>

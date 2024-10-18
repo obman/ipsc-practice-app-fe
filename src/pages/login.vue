@@ -8,7 +8,7 @@ export default defineComponent({
 
 <template>
   <section class="max-w-[20rem] mx-auto">
-    <h2 class="mb-12 text-xl text-center text-text font-bold">Login to your account</h2>
+    <h1 class="mb-12 text-xl text-center text-text font-bold">Login to your account</h1>
     <form class="p-6 border border-secondary border-radius rounded">
       <label
         for="username"

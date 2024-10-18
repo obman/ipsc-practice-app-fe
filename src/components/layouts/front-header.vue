@@ -7,11 +7,16 @@ export default defineComponent({
 </script>
 
 <template>
-  <header class="py-6 bg-[#393839] text-center text-white">
-    <h1 class="text-3xl font-bold text-white">IPSC Practice Application</h1>
-    <nav>
-      <NuxtLink to="/" class="text-[#eb9130] hover:text-white">Home</NuxtLink>
-      <NuxtLink to="/login" class="text-[#eb9130] hover:text-white">Login</NuxtLink>
+  <header class="ipsc-header flex justify-between items-center p-6 bg-tertiary text-center text-white">
+    <div class="logo">
+      <NuxtLink to="/">
+        <img src="@/static/ipsc-logo.svg" alt="ipsc-logo" class="w-10 h-10">
+      </NuxtLink>
+    </div>
+
+    <nav class="ipsc-main-navigation flex justify-end items-center gap-x-4">
+      <NuxtLink to="/" class="nav-item text-white hover:text-primary">IPSC Practice</NuxtLink>
+      <NuxtLink to="/login" class="nav-item text-white hover:text-primary">Login</NuxtLink>
     </nav>
   </header>
 </template>

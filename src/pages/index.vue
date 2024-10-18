@@ -1,7 +1,7 @@
 <template>
   <section>
     <header class="mb-6">
-      <h2 class="text-xl font-bold">Aimbot Drill - Target Acquisition Speed</h2>
+      <h1 class="text-xl font-bold">Aimbot Drill - Target Acquisition Speed</h1>
       <p>
         A simple yet effective shooting drill to practice fast target
         identification/acquisition.
@@ -20,7 +20,7 @@
         LINK :
         <a
           href="https://www.youtube.com/watch?v=Q4wKWsCFAfU"
-          class="text-[#eb9130]"
+          class="text-primary hover:underline"
           target="_blank"
           ><strong>Aimbot Drill to Increase Target Acquisition Speed</strong></a
         >
@@ -66,5 +66,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style src="@/assets/_base.css"></style>
