@@ -1,8 +1,8 @@
-<script lang="ts">
+<script>
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: "signin",
+  name: "SignInPage",
   data() {
     return {
       form: {
@@ -43,7 +43,7 @@ export default defineComponent({
     },
     isPasswordMatch() {
       return this.form.password === this.form.rePassword
-    }
+    },
   },
   methods: {
     validateForm() {
