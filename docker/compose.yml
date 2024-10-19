@@ -23,5 +23,7 @@ services:
 
 # Docker Networks
 networks:
+  app-network:
+    external: true
   ipsc-be-network:
     driver: bridge
