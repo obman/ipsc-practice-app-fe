@@ -109,6 +109,7 @@ export default defineComponent({
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
         <span class="errors username-error text-danger">{{ this.errors.username }}</span>
       </label>
+
       <label
         for="sign-email"
         class="block mb-6 cursor-pointer">
@@ -123,6 +124,7 @@ export default defineComponent({
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
         <span class="errors email-error text-danger">{{ this.errors.email }}</span>
       </label>
+
       <label
         for="sign-password"
         class="block mb-6 cursor-pointer">
@@ -137,6 +139,7 @@ export default defineComponent({
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
         <span class="errors password-error text-danger">{{ this.errors.password }}</span>
       </label>
+
       <label
         for="sign-re-password"
         class="block mb-6 cursor-pointer">
@@ -151,6 +154,7 @@ export default defineComponent({
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
         <span class="errors re-password-error text-danger">{{ this.errors.rePassword }}</span>
       </label>
+
       <button
         type="submit"
         class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors"

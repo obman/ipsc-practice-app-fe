@@ -22,6 +22,7 @@ export default defineComponent({
           name="ipsc-email"
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
       </label>
+
       <label
         for="login-password"
         class="block mb-6 cursor-pointer">
@@ -34,6 +35,7 @@ export default defineComponent({
           name="ipsc-password"
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
       </label>
+      
       <button
         type="submit"
         class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors">
