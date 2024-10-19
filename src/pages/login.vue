@@ -11,23 +11,25 @@ export default defineComponent({
     <h1 class="mb-12 text-xl text-center text-text font-bold">Login to your account</h1>
     <form class="p-6 border border-secondary border-radius rounded">
       <label
-        for="username"
+        for="login-email"
         class="block mb-6 cursor-pointer">
         <span class="block text-text">
-          Username:
+          Email:
         </span>
         <input
-          id="email"
+          id="login-email"
           type="email"
           name="ipsc-email"
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
       </label>
       <label
-        for="password"
+        for="login-password"
         class="block mb-6 cursor-pointer">
-        <span class="block text-text">Password: </span>
+        <span class="block text-text">
+          Password:
+        </span>
         <input
-          id="password"
+          id="login-password"
           type="password"
           name="ipsc-password"
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">

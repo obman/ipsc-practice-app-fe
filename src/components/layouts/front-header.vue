@@ -16,7 +16,8 @@ export default defineComponent({
 
     <nav class="ipsc-main-navigation flex justify-end items-center gap-x-4">
       <NuxtLink to="/" class="nav-item text-white hover:text-primary">IPSC Practice</NuxtLink>
-      <NuxtLink to="/login" class="nav-item text-white hover:text-primary">Login</NuxtLink>
+      <NuxtLink to="/login" class="nav-item text-white hover:text-primary">Log in</NuxtLink>
+      <NuxtLink to="/signin" class="nav-item text-white hover:text-primary">Sign In</NuxtLink>
     </nav>
   </header>
 </template>

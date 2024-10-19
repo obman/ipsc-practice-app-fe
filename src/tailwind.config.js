@@ -9,7 +9,8 @@ module.exports = {
       secondary: '#46515a',
       tertiary: '#393839',
       text: '#535353',
-      white: '#fff'
+      white: '#fff',
+      danger: '#dc3545',
     },
     extend: {},
   },
