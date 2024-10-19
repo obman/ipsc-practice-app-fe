@@ -5,15 +5,20 @@ services:
       context: ../
       dockerfile: docker/Dockerfile
     container_name: ipsc-fe
-    restart: always
+    restart: ${DOCKER_RESTART_POLICY}
     ports:
-      - "3000:3000"
+      - ${APP_PORT}:3000
     volumes:
       - ./../src/:/home/node/app
       - /home/node/app/node_modules/
     #networks:
     #  - ipsc-be-network
-    command: npm run dev
+    command:
+      - /bin/sh
+      - -c
+      - |
+        ${APP_RUN_CMD}
+        ${APP_RUN_CMD2}
 
 
 # Docker Networks

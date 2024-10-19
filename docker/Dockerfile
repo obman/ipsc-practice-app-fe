@@ -11,9 +11,6 @@ WORKDIR /home/node/app/
 COPY --chown=node:node ../src/package.json /home/node/app/package.json
 RUN npm install
 
-# Build Nuxt application
-#RUN npm run build
-
 COPY --chown=node:node . .
 
 ENV HOST 0.0.0.0
