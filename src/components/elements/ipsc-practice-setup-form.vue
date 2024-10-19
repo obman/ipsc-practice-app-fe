@@ -66,7 +66,7 @@ export default defineComponent({
 
     <label
       for="range-slider"
-      class="flex justify-between flex-col sm:max-w-[40rem] sm:flex-row mb-4 sm:mb-0">
+      class="flex justify-between flex-col mb-5 sm:max-w-[40rem] sm:flex-row">
       <span>How many targets will be used?</span><br>
       <span
       class="flex justify-between items-center">
