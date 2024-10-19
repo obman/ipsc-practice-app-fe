@@ -27,9 +27,13 @@
       </p>
     </div>
 
-    <IPSCPracticeSetupForm @submit="onSubmit" />
+    <IPSCPracticeSetupForm
+      @submit="onSubmit"/>
 
-    <IPSCPracticeData v-if="practices.length" :practices="practices" />
+    <IPSCPracticeData
+      v-if="practices.length"
+      :practices="practices"
+      class="mt-8"/>
   </section>
 </template>
 
