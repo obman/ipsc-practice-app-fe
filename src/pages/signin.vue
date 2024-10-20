@@ -3,6 +3,7 @@ import {defineComponent} from 'vue'
 
 export default defineComponent({
   name: "SignInPage",
+  layout: 'default',
   data() {
     return {
       form: {
@@ -51,25 +52,25 @@ export default defineComponent({
 
       // username validation
       this.errors.username = !this.isUsernameEmpty ? 'Username is empty' : !this.isUsernameUnique ? 'Username must be longer than 3 characters' : '';
-      success = !this.isUsernameEmpty && !this.isUsernameUnique;
+      success = this.isUsernameEmpty && this.isUsernameUnique;
 
       // email validation
       this.errors.email = !this.isEmailEmpty ? 'Email is empty' : !this.isEmailUnique ? 'Missing @ or/and . in email' : '';
-      success = !this.isEmailEmpty && !this.isEmailUnique;
+      success = this.isEmailEmpty && this.isEmailUnique;
 
       // validate password
       this.errors.password = !this.isPasswordEmpty ? 'Password is empty' : !this.isPasswordUnique ? 'Password must be longer than 6 characters' : '';
-      success = !this.isPasswordEmpty && !this.isPasswordUnique;
+      success = this.isPasswordEmpty && this.isPasswordUnique;
 
       // validate repeat password
       this.errors.rePassword = !this.isRePasswordEmpty ? 'Repeat password is empty' : !this.isPasswordMatch ? 'Passwords do not match' : '';
-      success = !this.isRePasswordEmpty && this.isPasswordMatch;
+      success = this.isRePasswordEmpty && this.isPasswordMatch;
 
       return success;
     },
     onSubmit() {
       // validate the form
-      if (! this.validateForm()) {
+      if (!this.validateForm()) {
         return false;
       }
 
