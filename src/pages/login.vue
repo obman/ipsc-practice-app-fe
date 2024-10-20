@@ -18,24 +18,6 @@ export default defineComponent({
       }
     }
   },
-  async fetch() {
-    console.log ('Fetching login');
-    const response = await this.$axios.$post('http://localhost:8080/api/v1/login/', JSON.stringify({
-      email: 'internetnestrani.si@gmail.com',
-      password: 'rootroot'
-    }), {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
-      }
-    });
-
-    if (! response) {
-      return false;
-    }
-
-    console.log (response);
-  },
   computed: {
     isEmailEmpty() {
       return !!this.form.email;
