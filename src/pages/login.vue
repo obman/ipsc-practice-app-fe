@@ -15,7 +15,8 @@ export default defineComponent({
       errors: {
         email: '',
         password: '',
-        login: ''
+        login: '',
+        loginAdditional: ''
       }
     }
   },
@@ -57,14 +58,18 @@ export default defineComponent({
       const user = await this.login(this.form);
       if (user) {
         // save to session or cookie or local storage logged in user
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user-logged', JSON.stringify(user));
 
         // redirect to home
         this.$router.push({ name: 'index' });
       }
       else {
         this.errors.login = 'Login failed!';
-        console.log (this.errors);
+
+        setTimeout(() => {
+          this.errors.login = '';
+          this.errors.loginAdditional = 'Try again. Wrong email or password';
+        }, 3000);
       }
     },
     ...mapActions({
@@ -78,7 +83,7 @@ export default defineComponent({
   <section class="max-w-[20rem] mx-auto">
     <h1 class="mb-12 text-xl text-center text-text font-bold">Login to your account</h1>
     <form
-      class="p-6 border border-secondary border-radius rounded"
+      class="ipsc-login-form relative p-6 border border-secondary border-radius rounded"
       @submit.prevent="onSubmit">
       <label
         for="login-email"
@@ -123,11 +128,19 @@ export default defineComponent({
         class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors">
         Login
       </button>
+      <div
+        v-if="errors.login"
+        class="login-error absolute top-0 left-0 w-full h-full">
+        <div class="error-overlay absolute top-0 left-0 w-full h-full z-2"></div>
+        <p class="error-info absolute top-1/2 left-1/2 p-2 rounded bg-danger text-white text-center z-4">{{ errors.login }}"</p>
+      </div>
+      <p
+        v-if="errors.loginAdditional"
+        class="login-additional-error mt-4 text-danger text-center">
+        {{ errors.loginAdditional }}"
+      </p>
     </form>
-    <p
-      v-if="errors.login"
-      class="errors login-error text-danger">
-      {{ errors.login }}"
-    </p>
   </section>
 </template>
+
+<style src="@/assets/pages/login.css"></style>
