@@ -18,7 +18,10 @@ export default {
     }
   },
   actions: {
-    async fetchLogin({ commit, getters }, payload) {
+    setLoggedUser({ commit }, user) {
+      commit('setUser', user)
+    },
+    async fetchLogin({ getters, dispatch }, payload) {
       // validated data needs to be sent to BE
       const response = await this.$axios.$post('/v1/login', payload, {
         headers: {
@@ -30,7 +33,7 @@ export default {
         return false;
       }
 
-      commit('setUser', {
+      dispatch('setLoggedUser', {
         id: response.userId,
         username: response.userName
       });
