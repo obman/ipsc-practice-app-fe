@@ -1,3 +1,11 @@
 .ipsc-login-form {
-    width: max-content;
+  .login-error {
+    .error-overlay {
+      background-color: rgba(255, 255, 255, .5);
+    }
+
+    .error-info {
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
 }
