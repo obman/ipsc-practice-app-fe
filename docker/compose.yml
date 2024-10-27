@@ -12,8 +12,7 @@ services:
       - ./../src/:/home/node/app
       - /home/node/app/node_modules/
     networks:
-      - app-network
-    #  - ipsc-be-network
+      - ipsc-be-network
     command:
       - /bin/sh
       - -c
@@ -24,7 +23,5 @@ services:
 
 # Docker Networks
 networks:
-  app-network:
-    external: true
   ipsc-be-network:
     driver: bridge
