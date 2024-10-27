@@ -1,14 +1,11 @@
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 import FrontHeader from '~/components/layouts/front-header.vue'
 import FrontFooter from '~/components/layouts/front-footer.vue'
 
 export default defineComponent({
   name: 'DefaultLayout',
-  components: { FrontFooter, FrontHeader },
-  head() {
-    return {}
-  }
+  components: { FrontFooter, FrontHeader }
 })
 </script>
 

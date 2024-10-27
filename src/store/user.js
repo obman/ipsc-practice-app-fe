@@ -1,7 +1,15 @@
 export default {
   state() {
     return {
-      user: null
+      user: {
+        id: null,
+        username: null
+      }
+    }
+  },
+  getters: {
+    user(state) {
+      return state.user
     }
   },
   mutations: {
@@ -10,10 +18,7 @@ export default {
     }
   },
   actions: {
-    setUser({ commit }, user) {
-      commit('setUser', user)
-    },
-    async fetchLogin({ commit }, payload) {
+    async fetchLogin({ commit, getters }, payload) {
       // validated data needs to be sent to BE
       const response = await this.$axios.$post('/v1/login', payload, {
         headers: {
@@ -21,12 +26,16 @@ export default {
           'Content-Type': 'application/json'}
       });
 
-      if (! response) {
+      if (!response || response.status === 'error') {
         return false;
       }
 
-      console.log (response);
-      commit('setUser', response.data.user);
+      commit('setUser', {
+        id: response.userId,
+        username: response.userName
+      });
+
+      return getters.user;
     }
   }
 }

@@ -14,7 +14,8 @@ export default defineComponent({
       },
       errors: {
         email: '',
-        password: ''
+        password: '',
+        login: ''
       }
     }
   },
@@ -46,14 +47,25 @@ export default defineComponent({
 
       return success;
     },
-    onSubmit() {
+    async onSubmit() {
       // validate form
       if (!this.validateForm()) {
         return false;
       }
 
       // send POST to BE - on store
-      this.login(this.form);
+      const user = await this.login(this.form);
+      if (user) {
+        // save to session or cookie or local storage logged in user
+        localStorage.setItem('user', JSON.stringify(user));
+
+        // redirect to home
+        this.$router.push({ name: 'index' });
+      }
+      else {
+        this.errors.login = 'Login failed!';
+        console.log (this.errors);
+      }
     },
     ...mapActions({
       login: 'user/fetchLogin'
@@ -80,7 +92,11 @@ export default defineComponent({
           type="email"
           name="ipsc-email"
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
-        <span class="errors email-error text-danger">{{ this.errors.email }}</span>
+        <span
+          v-if="errors.email"
+          class="errors email-error text-danger">
+          {{ errors.email }}
+        </span>
       </label>
 
       <label
@@ -95,7 +111,11 @@ export default defineComponent({
           type="password"
           name="ipsc-password"
           class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
-        <span class="errors password-error text-danger">{{ this.errors.password }}</span>
+        <span
+          v-if="errors.password"
+          class="errors password-error text-danger">
+          {{ errors.password }}
+        </span>
       </label>
 
       <button
@@ -104,5 +124,10 @@ export default defineComponent({
         Login
       </button>
     </form>
+    <p
+      v-if="errors.login"
+      class="errors login-error text-danger">
+      {{ errors.login }}"
+    </p>
   </section>
 </template>
