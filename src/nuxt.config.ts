@@ -16,10 +16,10 @@ export default defineNuxtConfig({
   ],
 
   runtimeConfig: {
-    apiAuthUrl: process.env.API_AUTH_URL,
-    public: {
-      apiUrl: process.env.API_BASE_URL + process.env.API_URL
-    }
+    apiDomain: process.env.API_DOMAIN,
+    apiBaseUrl: process.env.API_BASE_URL,
+    apiUrl: process.env.API_BASE_URL + process.env.API_URL,
+    public: {}
   },
 
   app: {
