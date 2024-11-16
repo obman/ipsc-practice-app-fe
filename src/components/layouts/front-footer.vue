@@ -18,7 +18,7 @@ export default defineComponent({
       to="/"
       class="mb-8 sm:mb-0">
       <img
-        src="@/static/ipsc-logo.svg"
+        src="@/public/ipsc-logo.svg"
         alt="ipsc-logo"
         class="w-[6rem] h-[6rem]">
     </NuxtLink>
@@ -26,13 +26,13 @@ export default defineComponent({
     <div class="flex justify-end items-center gap-x-8">
       <NuxtLink to="https://www.youtube.com/results?search_query=aimbot+drill+rifle" class="icon-link" target="_blank">
         <img
-          src="@/static/youtube-svgrepo-com-white.svg"
+          src="@/public/youtube-svgrepo-com-white.svg"
           alt="Aimbot drill on YouTube"
           class="w-6 h-6">
       </NuxtLink>
       <NuxtLink to="/" class="icon-link" target="_blank">
         <img
-          src="@/static/instagram-svgrepo-com-white.svg"
+          src="@/public/instagram-svgrepo-com-white.svg"
           alt="Aimbot drill on Instagram"
           class="w-6 h-6">
       </NuxtLink>

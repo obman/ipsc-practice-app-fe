@@ -92,4 +92,4 @@ export default defineComponent({
   </form>
 </template>
 
-<style src="~/assets/elements/ipsc-practice-setup-form.css"></style>
+<style src="@/assets/css/elements/ipsc-practice-setup-form.css"></style>

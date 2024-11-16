@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
-import { mapActions } from 'vuex';
-import FormValidationHelper from '~/utils/FormValidationHelper'
+import { mapActions } from 'pinia';
+import FormValidationHelper from '@/composables/FormValidationHelper';
 
 export default defineComponent({
   name: 'LogInPage',
@@ -72,9 +72,7 @@ export default defineComponent({
         }, 3000);
       }
     },
-    ...mapActions({
-      login: 'user/fetchLogin'
-    })
+    ...mapActions(useUser, ['login'])
   }
 })
 </script>
@@ -143,4 +141,4 @@ export default defineComponent({
   </section>
 </template>
 
-<style src="@/assets/pages/login.css"></style>
+<style src="@/assets/css/pages/login.css"></style>

@@ -1,4 +1,4 @@
-export default {
+export const useUser = defineStore('user', {
   state() {
     return {
       user: {
@@ -8,18 +8,13 @@ export default {
     }
   },
   getters: {
-    user(state) {
+    userItem(state) {
       return state.user
     }
   },
-  mutations: {
-    setUser(state, user) {
-      state.user = user
-    }
-  },
   actions: {
-    setLoggedUser({ commit }, user) {
-      commit('setUser', user)
+    setLoggedUser({ state }, user) {
+      state.user = user;
     },
     async fetchLogin({ getters, dispatch }, payload) {
       // validated data needs to be sent to BE
@@ -41,4 +36,4 @@ export default {
       return getters.user;
     }
   }
-}
+});

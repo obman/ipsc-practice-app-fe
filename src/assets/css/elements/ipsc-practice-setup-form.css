@@ -2,11 +2,14 @@
     .range-slider {
       -webkit-appearance: none;
       width: calc(100% - 3.5rem);
-      background: transparent;
+      height: 9px;
+      border-radius: 3px;
+      background: var(--secondary-color);
+      cursor: pointer;
 
       &::-webkit-slider-thumb {
         -webkit-appearance: none;
-        box-shadow: 1px 1px 1px var(--text-color), 0px 0px 1px #0d0d0d;
+        box-shadow: 1px 1px 1px var(--text-color), 0 0 1px #0d0d0d;
         width: 16px;
         height: 36px;
         margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
@@ -17,7 +20,7 @@
       }
 
       &::-moz-range-thumb {
-        box-shadow: 1px 1px 1px var(--text-color), 0px 0px 1px #0d0d0d;
+        box-shadow: 1px 1px 1px var(--text-color), 0 0 1px #0d0d0d;
         width: 16px;
         height: 36px;
         border: 1px solid var(--secondary-color);
@@ -27,7 +30,7 @@
       }
 
       &::-ms-thumb {
-        box-shadow: 1px 1px 1px var(--tertiary-color), 0px 0px 1px #0d0d0d;
+        box-shadow: 1px 1px 1px var(--tertiary-color), 0 0 1px #0d0d0d;
         width: 16px;
         height: 36px;
         border: 1px solid var(--secondary-color);
@@ -73,14 +76,14 @@
       }
 
       &::-ms-fill-lower {
-        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        box-shadow: 1px 1px 1px #000000, 0 0 1px #0d0d0d;
         border: 1px solid var(--secondary-color);
         border-radius: 3px;
         background: var(--tertiary-color);
       }
 
       &::-ms-fill-upper {
-        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+        box-shadow: 1px 1px 1px #000000, 0 0 1px #0d0d0d;
         border: 1px solid var(--secondary-color);
         border-radius: 3px;
         background: var(--tertiary-color);

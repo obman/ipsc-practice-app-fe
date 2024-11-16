@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import { mapGetters } from 'vuex';
+import { mapState } from 'pinia';
 
 export default defineComponent({
   name: 'FrontHeader',
@@ -11,15 +11,13 @@ export default defineComponent({
   },
   computed: {
     username() {
-      if (!this.user || !this.user.username || this.user.username.length === 0) {
+      if (!this.userItem || !this.userItem.username || this.userItem.username.length === 0) {
         return '';
       }
 
       return this.user.username
     },
-    ...mapGetters({
-      user: 'user/user'
-    })
+    ...mapState(useUser, ['userItem']),
   },
   methods: {
     profileMenuToggle() {
@@ -33,7 +31,7 @@ export default defineComponent({
   <header class="ipsc-header flex justify-between items-center p-6 bg-tertiary text-center text-white">
     <div class="logo">
       <NuxtLink to="/">
-        <img src="@/static/ipsc-logo.svg" alt="ipsc-logo" class="w-10 h-10">
+        <img src="@/public/ipsc-logo.svg" alt="ipsc-logo" class="w-10 h-10">
       </NuxtLink>
     </div>
 
@@ -77,4 +75,4 @@ export default defineComponent({
   </header>
 </template>
 
-<style src="@/assets/layouts/front-header.css"></style>
+<style src="@/assets/css/layouts/front-header.css"></style>

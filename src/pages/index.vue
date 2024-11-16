@@ -38,12 +38,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from 'vue';
 import IPSCPracticeSetupForm from '~/components/elements/ipsc-practice-setup-form.vue'
 import IPSCPracticeData from '~/components/elements/ipsc-practice-data.vue'
-import IPSC from '~/utils/IPSC'
+import IPSC from '~/composables/IPSC'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'IndexPage',
   components: { IPSCPracticeData, IPSCPracticeSetupForm },
   layout: 'DefaultLayout',
