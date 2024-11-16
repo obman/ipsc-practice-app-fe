@@ -1,6 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
-import { mapState } from 'pinia';
+import { mapActions, mapState } from 'pinia'
+import { useUser } from '@/stores/user'
 
 export default defineComponent({
   name: 'FrontHeader',
@@ -9,20 +10,32 @@ export default defineComponent({
       profileMenuOpen: false
     }
   },
+  mounted() {
+    let user = this.isUserLoggedIn();
+    if (user) {
+      // redirect to home - probably to dashboard in the future
+      this.$router.push({ name: 'index' });
+    }
+  },
   computed: {
     username() {
-      if (!this.userItem || !this.userItem.username || this.userItem.username.length === 0) {
+      if (!this.userItem) {
         return '';
       }
 
-      return this.user.username
+      if (!this.userItem.username || this.userItem.username.length === 0) {
+        return '';
+      }
+
+      return this.userItem.username
     },
     ...mapState(useUser, ['userItem']),
   },
   methods: {
     profileMenuToggle() {
       this.profileMenuOpen = !this.profileMenuOpen;
-    }
+    },
+    ...mapActions(useUser, ['isUserLoggedIn'])
   }
 })
 </script>
