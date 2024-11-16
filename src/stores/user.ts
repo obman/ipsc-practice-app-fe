@@ -1,39 +1,64 @@
+type User = {
+  id: number|null,
+  username: string|null,
+  token: string|null
+}
+
 export const useUser = defineStore('user', {
   state() {
     return {
       user: {
         id: null,
-        username: null
+        username: null,
+        token: null
       }
     }
   },
   getters: {
-    userItem(state) {
-      return state.user
+    userItem(state): User {
+      //console.log (localStorage);
+      //let user = localStorage.getItem('user-logged');
+      //return user ?? state.user;
+      return state.user;
     }
   },
   actions: {
-    setLoggedUser({ state }, user) {
-      state.user = user;
+    setLoggedUser(user): void {
+      this.user = user;
     },
-    async fetchLogin({ getters, dispatch }, payload) {
-      // validated data needs to be sent to BE
-      const response = await this.$axios.$post('/v1/login', payload, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json'}
+    isUserLoggedIn(): boolean {
+      const userLogged = JSON.parse(localStorage.getItem('user-logged'));
+      if (userLogged) {
+        this.setLoggedUser(userLogged);
+        return true;
+      }
+
+      return false;
+    },
+    async fetchLogin(payload: object): Promise<any> {
+      const response = await $fetch('/api/v1/auth', {
+        method: 'POST',
+        body: payload
       });
 
       if (!response || response.status === 'error') {
         return false;
       }
 
-      dispatch('setLoggedUser', {
-        id: response.userId,
-        username: response.userName
-      });
+      const token = response.token.length > 1 ? response.token.split('|')[1] : null;
+      if (token === null) {
+        return false;
+      }
 
-      return getters.user;
+      this.setLoggedUser({
+        id: response.id,
+        username: response.username && response.username.length > 1 ? response.username: null,
+        token: token
+      })
+
+      // save to session or cookie or local storage logged in user
+      localStorage.setItem('user-logged', JSON.stringify(this.userItem));
+      return this.userItem;
     }
   }
 });

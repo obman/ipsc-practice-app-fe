@@ -1,7 +1,8 @@
 <script>
 import { defineComponent } from 'vue';
-import { mapActions } from 'pinia';
+import { mapActions } from 'pinia'
 import FormValidationHelper from '@/composables/FormValidationHelper';
+import { useUser } from '@/stores/user'
 
 export default defineComponent({
   name: 'LogInPage',
@@ -17,7 +18,7 @@ export default defineComponent({
         password: '',
         login: '',
         loginAdditional: ''
-      }
+      },
     }
   },
   computed: {
@@ -55,11 +56,9 @@ export default defineComponent({
       }
 
       // send POST to BE - on store
-      const user = await this.login(this.form);
-      if (user) {
-        // save to session or cookie or local storage logged in user
-        localStorage.setItem('user-logged', JSON.stringify(user));
+      const user = await this.fetchLogin(this.form);
 
+      if (user) {
         // redirect to home
         this.$router.push({ name: 'index' });
       }
@@ -69,10 +68,10 @@ export default defineComponent({
         setTimeout(() => {
           this.errors.login = '';
           this.errors.loginAdditional = 'Try again. Wrong email or password';
-        }, 3000);
+        }, 1500);
       }
     },
-    ...mapActions(useUser, ['login'])
+    ...mapActions(useUser, ['fetchLogin'])
   }
 })
 </script>
