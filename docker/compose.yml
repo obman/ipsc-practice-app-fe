@@ -1,0 +1,27 @@
+services:
+  ipsc-fe:
+    # Use a custom image for nuxt
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: ipsc-fe
+    restart: ${DOCKER_RESTART_POLICY}
+    ports:
+      - ${APP_PORT}:3000
+    volumes:
+      - ./../src/:/app
+      - /app/node_modules/
+    networks:
+      - ipsc-be-network
+    command:
+      - /bin/sh
+      - -c
+      - |
+        ${APP_RUN_CMD}
+        ${APP_RUN_CMD2}
+
+
+# Docker Networks
+networks:
+  ipsc-be-network:
+    driver: bridge
