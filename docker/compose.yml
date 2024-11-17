@@ -13,6 +13,7 @@ services:
       - /app/node_modules/
     networks:
       - ipsc-be-network
+      - app-network-ipsc-fe
     command:
       - /bin/sh
       - -c
@@ -25,3 +26,5 @@ services:
 networks:
   ipsc-be-network:
     driver: bridge
+  app-network-ipsc-fe:
+    external: true
