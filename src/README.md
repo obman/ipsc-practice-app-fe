@@ -1,6 +1,31 @@
-# Nuxt Minimal Starter
+# IPSC Practice FE
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Docker
+All docker commands are executed from `docker` folder.
+
+Run this command: `docker compose up -d --no-deps --build ipsc-fe` when first build
+
+Run this command: `docker compose up -d` when lunching the container
+
+If you change any dockers `.env` variables, run first command.
+
+In dockers `.env` file enter commands to be executed after container is up and running:
+
+### Dev
+
+```dotenv
+# npm
+APP_RUN_CMD="npm run dev"
+APP_RUN_CMD2=""
+```
+
+### Production
+
+```dotenv
+# npm
+APP_RUN_CMD="npm run build"
+APP_RUN_CMD2="node .output/server/index.mjs"
+```
 
 ## Setup
 
@@ -9,15 +34,6 @@ Make sure to install dependencies:
 ```bash
 # npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -27,15 +43,6 @@ Start the development server on `http://localhost:3000`:
 ```bash
 # npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -45,15 +52,13 @@ Build the application for production:
 ```bash
 # npm
 npm run build
+```
 
-# pnpm
-pnpm build
+and than start the server:
 
-# yarn
-yarn build
-
-# bun
-bun run build
+```bash
+# npm
+npm run start
 ```
 
 Locally preview production build:
@@ -61,15 +66,6 @@ Locally preview production build:
 ```bash
 # npm
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
