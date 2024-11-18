@@ -8,11 +8,11 @@ export default defineComponent({
 
 <template>
   <footer class="flex justify-between items-center flex-col sm:flex-row py-16 px-6 bg-secondary text-center text-white">
-    <h3 class="text-lg mb-8 sm:mb-0">
+    <p class="text-lg mb-8 sm:mb-0">
       <span class="copy font-light">©</span>
       <span class="year">{{ new Date().getFullYear() }}</span>
       <strong>IPSC Practice</strong>
-    </h3>
+    </p>
 
     <NuxtLink
       to="/"
