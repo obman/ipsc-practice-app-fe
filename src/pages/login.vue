@@ -4,6 +4,8 @@ import { mapActions } from 'pinia'
 import FormValidationHelper from '@/composables/FormValidationHelper';
 import { useUser } from '@/stores/user'
 
+let gRecaptcha = null;
+
 export default defineComponent({
   name: 'LogInPage',
   layout: 'default',
@@ -20,6 +22,9 @@ export default defineComponent({
         loginAdditional: ''
       },
     }
+  },
+  setup() {
+    gRecaptcha = useGoogleRecaptcha();
   },
   computed: {
     isEmailEmpty() {
@@ -54,6 +59,11 @@ export default defineComponent({
       if (!this.validateForm()) {
         return false;
       }
+
+      //const { executeRecaptcha } = gRecaptcha;
+      //const { gToken } = await executeRecaptcha('login');
+      //console.log (gToken);
+      return false;
 
       // send POST to BE - on store
       const user = await this.fetchLogin(this.form);
