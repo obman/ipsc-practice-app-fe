@@ -19,6 +19,8 @@ export default defineNuxtConfig({
     apiDomain: process.env.API_DOMAIN,
     apiBaseUrl: process.env.API_BASE_URL,
     apiUrl: process.env.API_BASE_URL + process.env.API_URL,
+    gReCaptchaSiteKey: process.env.G_RECAPTCHA_SITE_KEY,
+    gReCaptchaSecretKey: process.env.G_RECAPTCHA_SECRET_KEY,
     public: {}
   },
 
