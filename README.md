@@ -1,68 +1,71 @@
-# ipsc-practice-app-fe
+# IPSC Practice FE
 
-## Build Setup
+## Docker
+All docker commands are executed from `docker` folder.
 
-```bash
-# install dependencies
-$ npm install
+Run this command: `docker compose up -d --no-deps --build ipsc-fe` when first build
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+Run this command: `docker compose up -d` when lunching the container
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+If you change any dockers `.env` variables, run first command.
 
-# generate static project
-$ npm run generate
+In dockers `.env` file enter commands to be executed after container is up and running:
+
+### Dev
+
+```dotenv
+# npm
+APP_RUN_CMD="npm run dev"
+APP_RUN_CMD2=""
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+### Production
 
-## Special Directories
+```dotenv
+# npm
+APP_RUN_CMD="npm run build"
+APP_RUN_CMD2="node .output/server/index.mjs"
+```
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+## Setup
 
-### `assets`
+Make sure to install dependencies:
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+```bash
+# npm
+npm install
+```
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+## Development Server
 
-### `components`
+Start the development server on `http://localhost:3000`:
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+```bash
+# npm
+npm run dev
+```
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+## Production
 
-### `layouts`
+Build the application for production:
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+```bash
+# npm
+npm run build
+```
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+and than start the server:
 
-### `pages`
+```bash
+# npm
+npm run start
+```
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+Locally preview production build:
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+```bash
+# npm
+npm run preview
+```
 
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
