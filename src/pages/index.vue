@@ -1,3 +1,37 @@
+<script lang="ts">
+import { defineComponent } from 'vue';
+import IPSCPracticeSetupForm from '~/components/elements/ipsc-practice-setup-form.vue'
+import IPSCPracticeData from '~/components/elements/ipsc-practice-data.vue'
+import IPSC from '~/composables/IPSC'
+
+export default defineComponent({
+  name: 'IndexPage',
+  components: { IPSCPracticeData, IPSCPracticeSetupForm },
+  layout: 'DefaultLayout',
+  data() {
+    return {
+      practice: {} as { cycles: number, delay: number, delayBetweenShots: number, targetsNumber: number },
+      practices: [] as Array<any>,
+      IPSC: null as IPSC | null
+    }
+  },
+  methods: {
+    async onSubmit(data: any) {
+      this.practice = data
+      this.IPSC = new IPSC(this.practice)
+
+
+      try {
+        await this.IPSC.speakTargets()
+        this.practices.push(this.IPSC.process)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+  },
+})
+</script>
+
 <template>
   <section>
     <header class="mb-6">
@@ -36,37 +70,3 @@
       class="mt-8"/>
   </section>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue';
-import IPSCPracticeSetupForm from '~/components/elements/ipsc-practice-setup-form.vue'
-import IPSCPracticeData from '~/components/elements/ipsc-practice-data.vue'
-import IPSC from '~/composables/IPSC'
-
-export default defineComponent({
-  name: 'IndexPage',
-  components: { IPSCPracticeData, IPSCPracticeSetupForm },
-  layout: 'DefaultLayout',
-  data() {
-    return {
-      practice: {} as { cycles: number, delay: number, delayBetweenShots: number, targetsNumber: number },
-      practices: [] as Array<any>,
-      IPSC: null as IPSC | null
-    }
-  },
-  methods: {
-    async onSubmit(data: any) {
-      this.practice = data
-      this.IPSC = new IPSC(this.practice)
-
-
-      try {
-        await this.IPSC.speakTargets()
-        this.practices.push(this.IPSC.process)
-      } catch (error) {
-        console.log(error)
-      }
-    },
-  },
-})
-</script>
