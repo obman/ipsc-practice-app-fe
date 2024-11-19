@@ -13,7 +13,7 @@ export default defineComponent({
   },
   methods: {
     onSubmit() {
-      this.$emit('submit', {
+      this.$emit('cycle', {
         cycles: this.cycles,
         delay: this.delay,
         delayBetweenShots: this.delayBetweenShots,
