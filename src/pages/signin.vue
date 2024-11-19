@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import { mapActions, mapState } from 'pinia';
 import { useSigninWizard } from '@/stores/signinWizard';
