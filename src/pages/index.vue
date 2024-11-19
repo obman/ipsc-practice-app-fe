@@ -17,15 +17,14 @@ export default defineComponent({
   },
   methods: {
     async onSubmit(data: any) {
-      this.practice = data
-      this.IPSC = new IPSC(this.practice)
-
+      this.practice = data;
+      this.IPSC = new IPSC(this.practice);
 
       try {
-        await this.IPSC.speakTargets()
-        this.practices.push(this.IPSC.process)
+        await this.IPSC.speakTargets();
+        this.practices.push(this.IPSC.process);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     },
   },
@@ -62,7 +61,7 @@ export default defineComponent({
     </div>
 
     <IPSCPracticeSetupForm
-      @submit="onSubmit"/>
+      @cycle="onSubmit"/>
 
     <IPSCPracticeData
       v-if="practices.length"
