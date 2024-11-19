@@ -25,7 +25,7 @@ export default class IPSC {
     this._process = value;
   }
 
-  async speakTargets(): Promise<void> {
+  public async speakTargets(): Promise<void> {
     let index = 0;
     let process: Array<any> = [];
 
