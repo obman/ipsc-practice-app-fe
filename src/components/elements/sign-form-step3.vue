@@ -1,0 +1,116 @@
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'SignFormStep3',
+  props: {
+    stepForm: {
+      type: Object,
+      required: true
+    },
+    errorsBag: {
+      type: Object,
+      required: true,
+    }
+  },
+  data() {
+    return {
+      form: {
+        password: null,
+        rePassword: null
+      },
+      errors: {
+        password: '',
+        rePassword: ''
+      }
+    }
+  },
+  mounted() {
+    this.form = this.stepForm;
+    this.errors = this.errorsBag;
+  },
+  computed: {
+    isPasswordEmpty() {
+      return !!this.form.password;
+    },
+    isPasswordUnique() {
+      return this.form.password.length > 6;
+    },
+    isRePasswordEmpty() {
+      return !!this.form.rePassword;
+    },
+    isPasswordMatch() {
+      return this.form.password === this.form.rePassword
+    },
+  },
+  methods: {
+    validateForm() {
+      this.errors.password = !this.isPasswordEmpty ? 'Password is empty' : !this.isPasswordUnique ? 'Password must be longer than 6 characters' : '';
+      const successPassword = this.isPasswordEmpty && this.isPasswordUnique;
+
+      this.errors.rePassword = !this.isRePasswordEmpty ? 'Repeat password is empty' : !this.isPasswordMatch ? 'Passwords do not match' : '';
+      const successRePassowrd = this.isRePasswordEmpty && this.isPasswordMatch;
+
+      return !(!successPassword || !successRePassowrd);
+    },
+    backStep() {
+      this.$emit('active-step', 2);
+    },
+    onSubmit() {
+      if (!this.validateForm()) {
+        return false;
+      }
+
+      this.$emit('step-form', this.form);
+      this.$emit('active-step', 4);
+    },
+  }
+})
+</script>
+
+<template>
+  <div class="ipsc-signin-form3">
+    <label
+      for="sign-password"
+      class="block mb-6 cursor-pointer">
+        <span class="block text-text">
+          Enter password:
+        </span>
+      <input
+        id="sign-password"
+        v-model="form.password"
+        type="password"
+        name="ipsc-password"
+        class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+      <span class="errors password-error text-danger">{{ errors.password }}</span>
+    </label>
+
+    <label
+      for="sign-re-password"
+      class="block mb-6 cursor-pointer">
+        <span class="block text-text">
+          Repeat password:
+        </span>
+      <input
+        id="sign-re-password"
+        v-model="form.rePassword"
+        type="password"
+        name="ipsc-re-password"
+        class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+      <span class="errors re-password-error text-danger">{{ errors.rePassword }}</span>
+    </label>
+
+    <button
+      type="submit"
+      class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors"
+      @click="backStep">
+      Back
+    </button>
+    <button
+      type="submit"
+      class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors"
+      @click="onSubmit">
+      Next
+    </button>
+  </div>
+</template>
