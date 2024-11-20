@@ -4,11 +4,20 @@
 
 @layer base {
   :root {
-    --primary-color: #eb9130;
+    --orange-color: #eb9130;
     --secondary-color: #46515a;
     --tertiary-color: #393839;
     --text-color: #535353;
+    --white-color: #fff;
+    --danger-color: #dc3545;
   }
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/Nunito/static/Nunito-Regular.ttf') format('truetype');
 }
 
 html,

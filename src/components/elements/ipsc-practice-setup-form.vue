@@ -32,36 +32,39 @@ export default defineComponent({
       for="cycles"
       class="flex justify-between flex-col sm:flex-row mb-4 sm:mb-0">
       <span>Number of Cycles: </span>
-      <input
+      <UInput
         id="cycles"
         v-model="cycles"
-        type="number"
         :min="1"
-        class="border border-text rounded px-2 py-1">
+        size="sm"
+        color="text"
+        type="number"/>
     </label>
 
     <label
       for="delay"
       class="flex justify-between flex-col sm:flex-row mb-4 sm:mb-0">
       <span>Start delay (second): </span>
-      <input
+      <UInput
         id="delay"
         v-model="delay"
-        type="number"
         :min="0"
-        class="border border-text rounded px-2 py-1">
+        size="sm"
+        color="text"
+        type="number"/>
     </label>
 
     <label
       for="delayShots"
       class="flex justify-between flex-col sm:flex-row mb-8">
       <span>Delay between shots (second): </span>
-      <input
+      <UInput
         id="delayShots"
         v-model="delayBetweenShots"
-        type="number"
         :min="1"
-        class="border border-text rounded px-2 py-1">
+        size="sm"
+        color="text"
+        type="number"/>
     </label>
 
     <label
@@ -85,10 +88,11 @@ export default defineComponent({
     </label>
     <p class="flex justify-end mb-6">Targets selected : {{ targetsNumber }}</p>
 
-    <button
-      type="submit"
-      class="px-2 py-1 mt-4 border border-text rounded text-text hover:bg-text hover:text-white"
-      @submit="onSubmit">START DRILL</button>
+    <UButton
+      color="text"
+      size="md"
+      label="START DRILL"
+      @click="onSubmit"/>
   </form>
 </template>
 

@@ -76,12 +76,11 @@ export default defineComponent({
         <span class="block text-text">
           Enter password:
         </span>
-      <input
+      <UInput
         id="sign-password"
         v-model="form.password"
         type="password"
-        name="ipsc-password"
-        class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+        color="text"/>
       <span class="errors password-error text-danger">{{ errors.password }}</span>
     </label>
 
@@ -91,26 +90,30 @@ export default defineComponent({
         <span class="block text-text">
           Repeat password:
         </span>
-      <input
+      <UInput
         id="sign-re-password"
         v-model="form.rePassword"
         type="password"
-        name="ipsc-re-password"
-        class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+        color="text"/>
       <span class="errors re-password-error text-danger">{{ errors.rePassword }}</span>
     </label>
 
-    <button
-      type="submit"
-      class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors"
-      @click="backStep">
-      Back
-    </button>
-    <button
-      type="submit"
-      class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors"
-      @click="onSubmit">
-      Next
-    </button>
+    <UButtonGroup
+      size="md"
+      class="justify-end w-full">
+      <UButton
+        icon="i-heroicons-chevron-left-16-solid"
+        color="secondary"
+        label="Back"
+        class="mr-1"
+        @click="backStep"/>
+      <UButton
+        icon="i-heroicons-chevron-right-16-solid"
+        color="secondary"
+        label="Next"
+        class="ml-1"
+        trailing
+        @click="onSubmit"/>
+    </UButtonGroup>
   </div>
 </template>

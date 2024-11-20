@@ -76,12 +76,11 @@ export default defineComponent({
         <span class="block text-text">
           Enter first name:
         </span>
-      <input
+      <UInput
         id="sign-first-name"
         v-model="form.firstName"
         type="text"
-        name="ipsc-first-name"
-        class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+        color="text"/>
       <span class="errors first-name-error text-danger">{{ errors.firstName }}</span>
     </label>
 
@@ -91,26 +90,30 @@ export default defineComponent({
         <span class="block text-text">
           Enter last name:
         </span>
-      <input
+      <UInput
         id="sign-last-name"
         v-model="form.lastName"
         type="text"
-        name="ipsc-last-name"
-        class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+        color="text"/>
       <span class="errors last-name-error text-danger">{{ errors.lastName }}</span>
     </label>
 
-    <button
-      type="submit"
-      class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors"
-      @click="backStep">
-      Back
-    </button>
-    <button
-      type="submit"
-      class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors"
-      @click="onSubmit">
-      Next
-    </button>
+    <UButtonGroup
+      size="md"
+      class="justify-end w-full">
+      <UButton
+        icon="i-heroicons-chevron-left-16-solid"
+        color="secondary"
+        label="Back"
+        class="mr-1"
+        @click="backStep"/>
+      <UButton
+        icon="i-heroicons-chevron-right-16-solid"
+        color="secondary"
+        label="Next"
+        class="ml-1"
+        trailing
+        @click="onSubmit"/>
+    </UButtonGroup>
   </div>
 </template>

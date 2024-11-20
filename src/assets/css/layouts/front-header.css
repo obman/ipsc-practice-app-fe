@@ -5,7 +5,7 @@
       transition: text-decoration-color 0.3s ease-in-out;
 
       &:hover {
-        text-decoration-color: var(--primary-color);
+        text-decoration-color: var(--orange-color);
       }
     }
   }

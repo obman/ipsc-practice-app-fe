@@ -70,38 +70,41 @@ export default defineComponent({
     <label
       for="sign-email"
       class="block mb-6 cursor-pointer">
-        <span class="block text-text">
-          Enter email:
-        </span>
-      <input
+      <span class="block text-text">
+        Enter email:
+      </span>
+      <UInput
         id="sign-email"
         v-model="form.email"
         type="email"
-        name="ipsc-email"
-        class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+        color="text"/>
       <span class="errors email-error text-danger">{{ errors.email }}</span>
     </label>
 
     <label
       for="sign-username"
       class="block mb-6 cursor-pointer">
-        <span class="block text-text">
-          Enter username:
-        </span>
-      <input
+      <span class="block text-text">
+        Enter username:
+      </span>
+      <UInput
         id="sign-username"
         v-model="form.username"
+        size="sm"
         type="text"
-        name="ipsc-username"
-        class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+        color="text"/>
       <span class="errors username-error text-danger">{{ errors.username }}</span>
     </label>
 
-    <button
-      type="submit"
-      class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors"
-      @click="onSubmit">
-      Next
-    </button>
+    <div class="flex justify-end">
+      <UButton
+        icon="i-heroicons-chevron-right-16-solid"
+        size="md"
+        color="secondary"
+        label="Next"
+        class="ml-1"
+        trailing
+        @click="onSubmit"/>
+    </div>
   </div>
 </template>

@@ -11,9 +11,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: [
-      '@pinia/nuxt'
-  ],
+  modules: ['@pinia/nuxt', '@nuxt/ui'],
 
   runtimeConfig: {
     apiDomain: process.env.API_DOMAIN,
@@ -44,5 +42,5 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'manifest', href: '/site.webmanifest' }
       ]
     },
-  }
+  },
 })

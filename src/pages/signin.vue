@@ -67,13 +67,13 @@ export default defineComponent({
         @step-form="(form) => setStep3Form(form)"
         @active-step="(step) => setActiveStep(step)"/>
 
-      <button
+      <UButton
         v-if="activeStep === 4"
+        size="md"
+        color="text"
         type="submit"
-        class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors"
-        @click="createUser">
-        Finish
-      </button>
+        label="Finish"
+        @click="createUser"/>
     </div>
   </section>
 </template>
