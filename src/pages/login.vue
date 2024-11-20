@@ -88,12 +88,13 @@ export default defineComponent({
         <span class="block text-text">
           Email:
         </span>
-        <input
+        <UInput
           id="login-email"
           v-model="form.email"
           type="email"
           name="ipsc-email"
-          class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+          size="md"
+          color="secondary"/>
         <span
           v-if="errors.email"
           class="errors email-error text-danger">
@@ -107,12 +108,13 @@ export default defineComponent({
         <span class="block text-text">
           Password:
         </span>
-        <input
+        <UInput
           id="login-password"
           v-model="form.password"
           type="password"
           name="ipsc-password"
-          class="block w-full px-2 py-1 border border-secondary border-rounded rounded outline-secondary">
+          size="md"
+          color="secondary"/>
         <span
           v-if="errors.password"
           class="errors password-error text-danger">
@@ -120,11 +122,10 @@ export default defineComponent({
         </span>
       </label>
 
-      <button
+      <UButton
         type="submit"
-        class="block w-full px-2 py-1 mt-4 border border-secondary rounded bg-secondary text-white hover:bg-white hover:text-secondary transition-colors">
-        Login
-      </button>
+        color="secondary"
+        label="Login"/>
       <div
         v-if="errors.login"
         class="login-error absolute top-0 left-0 w-full h-full">
