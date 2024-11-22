@@ -88,3 +88,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# NuxtUI3 Fonts module
+.src/.data
