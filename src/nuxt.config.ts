@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
 
-  modules: ['@pinia/nuxt', '@nuxt/ui', '@nuxt/fonts'],
+  modules: ['@pinia/nuxt', '@nuxt/ui', '@nuxt/fonts', '@nuxtjs/i18n'],
 
   postcss: {
     plugins: {
@@ -16,6 +16,10 @@ export default defineNuxtConfig({
     themes: {
       colors: ['primary', 'secondary', 'tertiary'],
     }
+  },
+
+  i18n: {
+    vueI18n: '~/i18n.config.ts'
   },
 
   runtimeConfig: {

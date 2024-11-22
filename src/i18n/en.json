@@ -1,0 +1,15 @@
+{
+  "common": {
+    "app_name": "IPSC",
+    "app_long_name": "IPSC Practice"
+  },
+  "main_menu": {
+    "home": "Home",
+    "about": "About",
+    "login": "Log In",
+    "signin": "Sign In",
+    "user_profile": "Hi, {username}",
+    "profile": "Profile",
+    "logout": "Log Out"
+  }
+}
