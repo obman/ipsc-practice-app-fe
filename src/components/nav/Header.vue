@@ -38,7 +38,7 @@ export default defineComponent({
     toggleMenu() {
       this.isOpen = !this.isOpen;
     },
-    ...mapActions(useUser, ['isUserLoggedIn'])
+    ...mapActions(useUser, ['isUserLoggedIn', 'userLogout'])
   }
 })
 </script>
@@ -102,7 +102,9 @@ export default defineComponent({
                 <NuxtLink to="/profile">Profile</NuxtLink>
               </li>
               <li class="text-content hover:text-primary">
-                <NuxtLink to="/logout">Logout</NuxtLink>
+                <span
+                  class="cursor-pointer"
+                  @click="userLogout">Logout</span>
               </li>
             </ul>
           </span>

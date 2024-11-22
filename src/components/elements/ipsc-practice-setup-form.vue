@@ -77,14 +77,16 @@ export default defineComponent({
         :min="1"
         :max="20"
         :step="1"
-        size="xl"/>
+        color="secondary"
+        size="xl" class="w-56"/>
     </label>
     <p class="flex justify-end mb-6">Targets selected : {{ targetsNumber }}</p>
 
     <UButton
-      color="tertiary"
+      color="secondary"
       size="md"
       label="START DRILL"
+      class="cursor-pointer"
       @click="onSubmit"/>
   </form>
 </template>

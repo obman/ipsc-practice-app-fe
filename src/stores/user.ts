@@ -63,6 +63,15 @@ export const useUser = defineStore('user', {
       // save to session or cookie or local storage logged in user
       localStorage.setItem('user-logged', JSON.stringify(this.userItem));
       return this.userItem;
+    },
+    userLogout(): void {
+      // delete localStorage
+      localStorage.removeItem('user-logged');
+      this.user = {
+        id: null,
+        username: null,
+        token: null
+      }
     }
   }
 });
