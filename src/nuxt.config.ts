@@ -2,16 +2,9 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  css: ['~/assets/css/_base.css'],
+  css: ['~/assets/css/main.css'],
 
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
-
-  modules: ['@pinia/nuxt', '@nuxt/ui'],
+  modules: ['@pinia/nuxt', '@nuxt/ui', '@nuxt/fonts'],
 
   runtimeConfig: {
     apiDomain: process.env.API_DOMAIN,
@@ -20,6 +13,12 @@ export default defineNuxtConfig({
     gReCaptchaSiteKey: process.env.G_RECAPTCHA_SITE_KEY,
     gReCaptchaSecretKey: process.env.G_RECAPTCHA_SECRET_KEY,
     public: {}
+  },
+
+  postcss: {
+    plugins: {
+      '@tailwindcss/postcss': {},
+    },
   },
 
   app: {

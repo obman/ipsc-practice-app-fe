@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+@theme {
+  --font-sans: 'Nunito', sans-serif;
+
+  --primary-color: #eb9130;
+  --primary-color-50: #fef9ee;
+  --primary-color-100: #fcf1d8;
+  --primary-color-200: #f8dfb0;
+  --primary-color-300: #f4c77d;
+  --primary-color-400: #eea549;
+  --primary-color-500: #eb9130;
+  --primary-color-600: #db721b;
+  --primary-color-700: #b65718;
+  --primary-color-800: #91461b;
+  --primary-color-900: #753a19;
+  --primary-color-950: #3f1c0b;
+
+  --secondary-color: #46515a;
+  --secondary-color-50: #f4f6f7;
+  --secondary-color-100: #e3e7ea;
+  --secondary-color-200: #cad3d7;
+  --secondary-color-300: #a5b4bb;
+  --secondary-color-400: #798c97;
+  --secondary-color-500: #5d707d;
+  --secondary-color-600: #505f6a;
+  --secondary-color-700: #46515a;
+  --secondary-color-800: #3e464c;
+  --secondary-color-900: #373c42;
+  --secondary-color-950: #21262b;
+
+  --tertiary-color: #393839;
+  --tertiary-color-50: #f6f6f6;
+  --tertiary-color-100: #e7e7e7;
+  --tertiary-color-200: #d1d1d1;
+  --tertiary-color-300: #b0b0b0;
+  --tertiary-color-400: #888888;
+  --tertiary-color-500: #6d6d6d;
+  --tertiary-color-600: #5d5d5d;
+  --tertiary-color-700: #535353;
+  --tertiary-color-800: #454545;
+  --tertiary-color-900: #3d3d3d;
+  --tertiary-color-950: #262626;
+
+  --text-color: #535353;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 100 900;
+  src: url('~/public/fonts/Nunito/Nunito-VariableFont_wght.eot');
+  src: url('~/public/fonts/Nunito/Nunito-VariableFont_wght.eot?#iefix') format('embedded-opentype'),
+  url('~/public/fonts/Nunito/Nunito-VariableFont_wght.woff') format('woff'),
+  url('~/public/fonts/Nunito/Nunito-VariableFont_wght.woff2') format('woff2'),
+  url('~/public/fonts/Nunito/Nunito-VariableFont_wght.svg#Nunito-VariableFont_wght') format('svg'),
+  url('~/public/fonts/Nunito/Nunito-VariableFont_wght.ttf') format('truetype'),
+  url('~/public/fonts/Nunito/Nunito-VariableFont_wght.otf') format('otf');
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+}

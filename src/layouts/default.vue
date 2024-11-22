@@ -1,14 +1,3 @@
-<script>
-import { defineComponent } from 'vue'
-import FrontHeader from '~/components/layouts/front-header.vue'
-import FrontFooter from '~/components/layouts/front-footer.vue'
-
-export default defineComponent({
-  name: 'DefaultLayout',
-  components: { FrontFooter, FrontHeader }
-})
-</script>
-
 <template>
   <div class="ipsc-practice-app size-full">
     <FrontHeader />
@@ -18,5 +7,3 @@ export default defineComponent({
     <FrontFooter />
   </div>
 </template>
-
-<style src="@/assets/css/_base.css"></style>
