@@ -41,18 +41,22 @@ export const useUser = defineStore('user', {
         body: payload
       });
 
-      if (!response || response.status === 'error') {
+      if (!response) {
+        return false;
+      }
+      if (!Object.keys(response.data).length) {
         return false;
       }
 
-      const token = response.token.length > 1 ? response.token.split('|')[1] : null;
+      const data = response.data;
+      const token = data.token.length > 1 ? data.token.split('|')[1] : null;
       if (token === null) {
         return false;
       }
 
       this.setLoggedUser({
-        id: response.id,
-        username: response.username && response.username.length > 1 ? response.username: null,
+        id: data.id,
+        username: data.username && data.username.length > 1 ? data.username: null,
         token: token
       })
 

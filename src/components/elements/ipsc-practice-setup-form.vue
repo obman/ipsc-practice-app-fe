@@ -8,7 +8,7 @@ export default defineComponent({
       cycles: 1,
       delay: 0,
       delayBetweenShots: 1,
-      targetsNumber: 1
+      targetsNumber: 3
     }
   },
   methods: {
@@ -71,29 +71,20 @@ export default defineComponent({
       for="range-slider"
       class="flex justify-between flex-col mb-5 sm:max-w-[40rem] sm:flex-row">
       <span>How many targets will be used?</span><br>
-      <span
-      class="flex justify-between items-center">
-        <span
-          class="w-6 text-center">1</span>
-        <input
-          id="range-slider"
-          v-model="targetsNumber"
-          type="range"
-          class="range-slider"
-          min="1"
-          max="20">
-        <span
-          class="w-6 text-center">20</span>
-      </span>
+      <USlider
+        id="range-slider"
+        v-model="targetsNumber"
+        :min="1"
+        :max="20"
+        :step="1"
+        size="xl"/>
     </label>
     <p class="flex justify-end mb-6">Targets selected : {{ targetsNumber }}</p>
 
     <UButton
-      color="text"
+      color="tertiary"
       size="md"
       label="START DRILL"
       @click="onSubmit"/>
   </form>
 </template>
-
-<style src="@/assets/css/elements/ipsc-practice-setup-form.css"></style>

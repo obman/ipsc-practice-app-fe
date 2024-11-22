@@ -6,6 +6,18 @@ export default defineNuxtConfig({
 
   modules: ['@pinia/nuxt', '@nuxt/ui', '@nuxt/fonts'],
 
+  postcss: {
+    plugins: {
+      '@tailwindcss/postcss': {},
+    },
+  },
+
+  ui: {
+    themes: {
+      colors: ['primary', 'secondary', 'tertiary'],
+    }
+  },
+
   runtimeConfig: {
     apiDomain: process.env.API_DOMAIN,
     apiBaseUrl: process.env.API_BASE_URL,
@@ -13,12 +25,6 @@ export default defineNuxtConfig({
     gReCaptchaSiteKey: process.env.G_RECAPTCHA_SITE_KEY,
     gReCaptchaSecretKey: process.env.G_RECAPTCHA_SECRET_KEY,
     public: {}
-  },
-
-  postcss: {
-    plugins: {
-      '@tailwindcss/postcss': {},
-    },
   },
 
   app: {
