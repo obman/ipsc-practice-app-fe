@@ -69,19 +69,19 @@ export default defineComponent({
           <NuxtLink
             to="/"
             class="nav-item mb-2 text-content hover:text-primary md:inline md:mb-0 md:text-white">
-            IPSC Practice
+            {{ $t('main_menu.home') }}
           </NuxtLink>
           <NuxtLink
             v-if="!username"
             to="/login"
             class="nav-item mb-2 text-content hover:text-primary md:inline md:mb-0 md:text-white">
-            Log in
+            {{ $t('main_menu.login') }}
           </NuxtLink>
           <NuxtLink
             v-if="!username"
             to="/signin"
             class="nav-item mb-2 text-content hover:text-primary md:inline md:mb-0 md:text-white">
-            Sign In
+            {{ $t('main_menu.signin') }}
           </NuxtLink>
           <span
             v-if="username"
@@ -89,7 +89,9 @@ export default defineComponent({
             <span
               class="nav-item flex justify-end items-center text-content hover:text-primary md:justify-start cursor-pointer md:text-white"
               @click="profileMenuToggle">
-              <span class="mr-1">Hi, {{ username }}</span>
+              <span class="mr-1">
+                {{ $t('main_menu.user_profile', username) }}
+              </span>
               <UButton
                 icon="i-iconamoon-arrow-down-2"
                 color="tertiary"
@@ -99,12 +101,16 @@ export default defineComponent({
               class="block md:absolute md:top-14 md:right-0 md:p-4 md:bg-white md:border md:border-secondary md:border-rounded rounded"
               :class="{'hidden': !profileMenuOpen}">
               <li class="text-content hover:text-primary">
-                <NuxtLink to="/profile">Profile</NuxtLink>
+                <NuxtLink to="/profile">
+                  {{ $t('main_menu.profile') }}
+                </NuxtLink>
               </li>
               <li class="text-content hover:text-primary">
                 <span
                   class="cursor-pointer"
-                  @click="userLogout">Logout</span>
+                  @click="userLogout">
+                  {{ $t('main_menu.logout') }}
+                </span>
               </li>
             </ul>
           </span>

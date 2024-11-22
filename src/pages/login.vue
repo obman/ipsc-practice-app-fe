@@ -94,7 +94,8 @@ export default defineComponent({
           type="email"
           name="ipsc-email"
           size="md"
-          color="secondary"/>
+          color="secondary"
+          class="w-full"/>
         <span
           v-if="errors.email"
           class="errors email-error text-danger">
@@ -114,7 +115,8 @@ export default defineComponent({
           type="password"
           name="ipsc-password"
           size="md"
-          color="secondary"/>
+          color="secondary"
+          class="w-full"/>
         <span
           v-if="errors.password"
           class="errors password-error text-danger">
@@ -141,4 +143,4 @@ export default defineComponent({
   </section>
 </template>
 
-<style src="@/assets/css/pages/login.css"></style>
+<style src="@/assets/css/pages/login.css" scoped></style>
