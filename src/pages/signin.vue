@@ -81,7 +81,9 @@ export default defineComponent({
 <template>
   <div class="max-w-[20rem] mx-auto">
     <h1 class="mb-12 text-xl text-center text-text font-bold">Create your account</h1>
-    <div class="my-8">
+    <div
+      v-if="activeStep !== 4"
+      class="my-8">
       <p class="mb-4">Some info before you sign in:</p>
       <ul class="list-disc">
         <li><u>Username must be longer than 3 characters and not longer than 20 characters.</u></li>
@@ -89,6 +91,19 @@ export default defineComponent({
         <li><u>Last name must be longer than 3 characters and not longer than 20 characters.</u></li>
         <li><u>Password must be longer than 6 characters.</u></li>
       </ul>
+    </div>
+    <div v-if="activeStep === 4">
+      <p class="mb-4">Review your account details: </p>
+      <div class="singin-data">
+        <div class="mb-4">
+          <p>Email: {{ step1.email }}</p>
+          <p>Username: {{ step1.username }}</p>
+        </div>
+        <div class="flex justify-between items-center mb-4">
+          <p>First Name: {{ step2.firstName }}</p>
+          <p>Last Name: {{ step2.lastName }}</p>
+        </div>
+      </div>
     </div>
     <form class="p-6 border border-secondary border-radius rounded">
       <transition :name="`slide-${slideStepClass}`">
@@ -100,14 +115,24 @@ export default defineComponent({
           @on-next="(form) => onFormChange(form, activeStep + 1)"></component>
       </transition>
 
-      <UButton
-        v-if="activeStep === 4"
-        size="md"
-        color="text"
-        variant="solid"
-        type="submit"
-        label="Finish"
-        @click="onSubmit($event)"/>
+      <div v-if="activeStep === 4">
+        <UButton
+          icon="i-heroicons-chevron-left-16-solid"
+          size="md"
+          color="secondary"
+          variant="solid"
+          label="Back"
+          class="w-full mb-2 justify-center cursor-pointer"
+          @click="() => {onActiveStep(activeStep - 1); onFormChange(this.stepForm, activeStep) }"/>
+        <UButton
+          size="md"
+          color="secondary"
+          variant="solid"
+          type="submit"
+          label="Create account"
+          class="block w-full cursor-pointer"
+          @click="onSubmit($event)"/>
+      </div>
     </form>
   </div>
 </template>
