@@ -1,9 +1,7 @@
 <script lang="ts">
 import { mapActions, mapState } from 'pinia';
-import { useSigninWizard } from '@/stores/signinWizard';
 
-export default {
-  layout: 'default',
+export default defineComponent({
   data() {
     return {
       errors: {
@@ -11,10 +9,41 @@ export default {
         email: '',
         password: '',
         rePassword: '',
-      }
+      },
     }
   },
   computed: {
+    activeForm(): string {
+      switch(this.activeStep) {
+        case 1:
+          return resolveComponent('LazySigninFormStep1');
+        case 2:
+          return resolveComponent('LazySigninFormStep2');
+        case 3:
+          return resolveComponent('LazySigninFormStep3');
+      }
+      return resolveComponent(this.stepComponents[this.activeStep]);
+    },
+    stepForm(): object {
+      switch(this.activeStep) {
+        case 1:
+          return this.step1;
+        case 2:
+          return this.step2;
+        case 3:
+          return this.step3;
+      }
+    },
+    stepErrors(): object {
+      switch(this.activeStep) {
+        case 1:
+          return this.errorsStep1;
+        case 2:
+          return this.errorsStep2;
+        case 3:
+          return this.errorsStep3;
+      }
+    },
     ...mapState(useSigninWizard, ['step1', 'step2', 'step3', 'activeStep', 'errorsStep1', 'errorsStep2', 'errorsStep3']),
   },
   methods: {
@@ -25,7 +54,7 @@ export default {
     },
     ...mapActions(useSigninWizard, ['setActiveStep', 'setStep1Form', 'setStep2Form', 'setStep3Form'])
   }
-}
+})
 </script>
 
 <template>
@@ -42,26 +71,14 @@ export default {
     </div>
     <div
       class="p-6 border border-secondary border-radius rounded">
-      <SigninFormStep1
-        v-if="activeStep === 1"
-        :step-form="step1"
-        :errors-bag="errorsStep1"
-        @step-form="(form) => setStep1Form(form)"
-        @active-step="(step) => setActiveStep(step)"/>
-
-      <SigninFormStep2
-        v-if="activeStep === 2"
-        :step-form="step2"
-        :errors-bag="errorsStep2"
-        @step-form="(form) => setStep2Form(form)"
-        @active-step="(step) => setActiveStep(step)"/>
-
-      <SigninFormStep3
-        v-if="activeStep === 3"
-        :step-form="step3"
-        :errors-bag="errorsStep3"
-        @step-form="(form) => setStep3Form(form)"
-        @active-step="(step) => setActiveStep(step)"/>
+      <transition name="slide">
+        <component
+          :is="activeForm"
+          :step-form="stepForm"
+          :errors-bag="stepErrors"
+          @step-form="(form) => setStep1Form(form)"
+          @active-step="(step) => setActiveStep(step)"></component>
+      </transition>
 
       <UButton
         v-if="activeStep === 4"
@@ -73,3 +90,21 @@ export default {
     </div>
   </section>
 </template>
+
+<style scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: all .6s ease;
+}
+
+.slide-enter-from {
+  height: 0;
+  opacity: 0;
+  transform: translateX(100%);
+}
+.slide-leave-to {
+  height: 0;
+  opacity: 0;
+  transform: translateX(-100%);
+}
+</style>
