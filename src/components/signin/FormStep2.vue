@@ -1,6 +1,4 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
-
 export default defineComponent({
   props: {
     stepForm: {
@@ -52,17 +50,12 @@ export default defineComponent({
 
       return !(!successName || !successSurname);
     },
-    backStep() {
-      this.$emit('active-step', 1);
+    onBack() {
+      this.$emit('on-back', this.form);
     },
-    onSubmit() {
-      if (!this.validateForm()) {
-        return false;
-      }
-
-      this.$emit('step-form', this.form);
-      this.$emit('active-step', 3);
-    },
+    onNext() {
+      this.$emit('on-next', this.form);
+    }
   }
 })
 </script>
@@ -73,14 +66,15 @@ export default defineComponent({
       for="sign-first-name"
       class="block mb-6 cursor-pointer">
         <span class="block text-text">
-          Enter first name:
+          {{ $t('signin.fields.first_name_label') }}
         </span>
       <UInput
         id="sign-first-name"
         v-model="form.firstName"
         type="text"
         color="text"
-        class="w-full"/>
+        class="w-full"
+        required/>
       <span class="errors first-name-error text-danger">{{ errors.firstName }}</span>
     </label>
 
@@ -88,14 +82,15 @@ export default defineComponent({
       for="sign-last-name"
       class="block mb-6 cursor-pointer">
         <span class="block text-text">
-          Enter last name:
+          {{ $t('signin.fields.last_name_label') }}
         </span>
       <UInput
         id="sign-last-name"
         v-model="form.lastName"
         type="text"
         color="text"
-        class="w-full"/>
+        class="w-full"
+        required/>
       <span class="errors last-name-error text-danger">{{ errors.lastName }}</span>
     </label>
 
@@ -107,14 +102,14 @@ export default defineComponent({
         color="secondary"
         label="Back"
         class="mr-1"
-        @click="backStep"/>
+        @click="onBack"/>
       <UButton
         icon="i-heroicons-chevron-right-16-solid"
         color="secondary"
         label="Next"
-        class="ml-1"
+        class="ml-1 cursor-pointer"
         trailing
-        @click="onSubmit"/>
+        @click="onNext"/>
     </UButtonGroup>
   </div>
 </template>

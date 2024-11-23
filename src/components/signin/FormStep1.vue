@@ -1,6 +1,4 @@
 <script lang="ts">
-import { defineComponent } from 'vue'
-
 export default defineComponent({
   props: {
     stepForm: {
@@ -52,14 +50,9 @@ export default defineComponent({
 
       return !(!emailSuccess || !usernameSuccess);
     },
-    onSubmit() {
-      if (!this.validateForm()) {
-        return false;
-      }
-
-      this.$emit('step-form', this.form);
-      this.$emit('active-step', 2);
-    },
+    onNext() {
+      this.$emit('on-next', this.form);
+    }
   }
 })
 </script>
@@ -70,7 +63,7 @@ export default defineComponent({
       for="sign-email"
       class="block mb-6 cursor-pointer">
       <span class="block text-text">
-        Enter email:
+        {{ $t('signin.fields.email_label') }}
       </span>
       <UInput
         id="sign-email"
@@ -85,7 +78,7 @@ export default defineComponent({
       for="sign-username"
       class="block mb-6 cursor-pointer">
       <span class="block text-text">
-        Enter username:
+        {{ $t('signin.fields.username_label') }}
       </span>
       <UInput
         id="sign-username"
@@ -93,7 +86,7 @@ export default defineComponent({
         size="sm"
         type="text"
         color="text"
-        class="w-full"/>
+        class="w-full" />
       <span class="errors username-error text-danger">{{ errors.username }}</span>
     </label>
 
@@ -103,9 +96,9 @@ export default defineComponent({
         size="md"
         color="secondary"
         label="Next"
-        class="ml-1"
+        class="ml-1 cursor-pointer"
         trailing
-        @click="onSubmit"/>
+        @click="onNext"/>
     </div>
   </div>
 </template>
