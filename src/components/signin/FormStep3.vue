@@ -2,7 +2,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'SignFormStep3',
   props: {
     stepForm: {
       type: Object,
@@ -94,7 +93,8 @@ export default defineComponent({
         id="sign-re-password"
         v-model="form.rePassword"
         type="password"
-        color="text"/>
+        color="text"
+        class="w-full"/>
       <span class="errors re-password-error text-danger">{{ errors.rePassword }}</span>
     </label>
 

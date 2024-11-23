@@ -2,7 +2,6 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'SignFormStep1',
   props: {
     stepForm: {
       type: Object,
@@ -77,7 +76,8 @@ export default defineComponent({
         id="sign-email"
         v-model="form.email"
         type="email"
-        color="text"/>
+        color="text"
+        class="w-full"/>
       <span class="errors email-error text-danger">{{ errors.email }}</span>
     </label>
 
@@ -92,7 +92,8 @@ export default defineComponent({
         v-model="form.username"
         size="sm"
         type="text"
-        color="text"/>
+        color="text"
+        class="w-full"/>
       <span class="errors username-error text-danger">{{ errors.username }}</span>
     </label>
 
