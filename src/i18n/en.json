@@ -11,5 +11,14 @@
     "user_profile": "Hi, {username}",
     "profile": "Profile",
     "logout": "Log Out"
+  },
+  "signin": {
+    "infotext": {
+      "step1": "Step 1"
+    },
+    "fields": {
+      "email_label": "Enter email: ",
+      "username_label": "Enter username"
+    }
   }
 }
