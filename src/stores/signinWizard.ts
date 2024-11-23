@@ -44,14 +44,18 @@ export const useSigninWizard = defineStore('signinWizard', {
     setActiveStep(step: number) {
       this.step = step;
     },
-    setStep1Form(form: any) {
-      this.form.step1 = form;
-    },
-    setStep2Form(form: any) {
-      this.form.step2 = form;
-    },
-    setStep3Form(form: any) {
-      this.form.step3 = form;
+    setActiveStepForm(step: number, form: any) {
+      switch(step) {
+        case 1:
+          this.form.step1 = form;
+          break;
+        case 2:
+          this.form.step2 = form;
+          break;
+        case 3:
+          this.form.step3 = form;
+          break;
+      }
     },
   },
 });
