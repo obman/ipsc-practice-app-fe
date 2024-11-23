@@ -9,6 +9,7 @@
   --breakpoint-sm: 576px;
   --breakpoint-xs: 480px;
 
+  --font-base: 'Nunito', sans-serif;
   --font-sans: 'Nunito', sans-serif;
 
   --color-primary: #eb9130;
