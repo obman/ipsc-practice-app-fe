@@ -18,7 +18,7 @@
     },
     "fields": {
       "email_label": "Enter email: *",
-      "username_label": "Enter username: ",
+      "username_label": "Enter username: *",
       "first_name_label": "Enter first name: *",
       "last_name_label": "Enter last name: *",
       "password_label": "Enter password: *",
