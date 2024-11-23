@@ -64,6 +64,36 @@ export const useUser = defineStore('user', {
       localStorage.setItem('user-logged', JSON.stringify(this.userItem));
       return this.userItem;
     },
+    async fetchRegister(payload: object): Promise<any> {
+      const response = await $fetch('/api/v1/create-account', {
+        method: 'POST',
+        body: payload
+      });
+
+      console.log (response);
+      if (!response) {
+        return false;
+      }
+      if (!Object.keys(response.data).length) {
+        return false;
+      }
+
+      const data = response.data;
+      const token = data.token.length > 1 ? data.token.split('|')[1] : null;
+      if (token === null) {
+        return false;
+      }
+
+      this.setLoggedUser({
+        id: data.id,
+        username: data.username && data.username.length > 1 ? data.username: null,
+        token: token
+      })
+
+      // save to session or cookie or local storage logged in user
+      localStorage.setItem('user-logged', JSON.stringify(this.userItem));
+      return this.userItem;
+    },
     userLogout(): void {
       // delete localStorage
       localStorage.removeItem('user-logged');
