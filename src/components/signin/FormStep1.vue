@@ -51,6 +51,10 @@ export default defineComponent({
       return !(!emailSuccess || !usernameSuccess);
     },
     onNext() {
+      if (!this.validateForm()) {
+        return false;
+      }
+
       this.$emit('on-next', this.form);
     }
   }
