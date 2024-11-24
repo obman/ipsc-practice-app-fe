@@ -2,6 +2,8 @@ import { h } from 'vue';
 
 const FunctionalStepForm = (props, ctx) => {
   const steps = ctx.slots.default();
+  console.log ('Active step: ', props.activeStep);
+  console.log (steps.length);
 
   return h(
     steps[(props.activeStep - 1)],

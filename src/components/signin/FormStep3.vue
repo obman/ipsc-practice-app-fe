@@ -54,6 +54,9 @@ export default defineComponent({
       this.$emit('on-back', this.form);
     },
     onNext() {
+      if (!this.validateForm()) {
+        return false;
+      }
       this.$emit('on-next', this.form);
     }
   }

@@ -32,9 +32,6 @@ export const useSigninWizard = defineStore('signinWizard', {
     }
   }),
   getters: {
-    step1: (state) => state.form.step1,
-    step2: (state) => state.form.step2,
-    step3: (state) => state.form.step3,
     activeStep: (state) => state.step,
     activeStepForm(state): object {
       switch(state.activeStep) {
@@ -44,11 +41,10 @@ export const useSigninWizard = defineStore('signinWizard', {
           return state.step2;
         case 3:
           return state.step3;
+        default:
+          return {};
       }
     },
-    errorsStep1: (state) => state.errors.step1,
-    errorsStep2: (state) => state.errors.step2,
-    errorsStep3: (state) => state.errors.step3,
     activeStepErrors(state) {
       switch(state.activeStep) {
         case 1:
@@ -57,6 +53,8 @@ export const useSigninWizard = defineStore('signinWizard', {
           return state.errorsStep2;
         case 3:
           return state.errorsStep3;
+        default:
+          return {};
       }
     }
   },

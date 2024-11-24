@@ -54,7 +54,6 @@ export default defineComponent({
       if (!this.validateForm()) {
         return false;
       }
-
       this.$emit('on-next', this.form);
     }
   }

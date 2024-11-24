@@ -19,7 +19,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="max-w-[20rem] mx-auto">
+  <div class="max-w-[40rem] mx-auto">
     <h1 class="mb-12 text-xl text-center text-text font-bold">Create your account</h1>
     <div
       v-if="activeStep !== 4"
@@ -44,6 +44,11 @@ export default defineComponent({
           <p>Last Name: {{ step2.lastName }}</p>
         </div>
       </div>
+    </div>
+
+    <div class="flex justify-center items-center mb-12">
+      <SigninProgressBar
+        :active-step="activeStep"/>
     </div>
     <SigninForm />
   </div>
