@@ -1,13 +1,9 @@
 <script lang="ts">
 export default defineComponent({
   props: {
-    stepForm: {
+    data: {
       type: Object,
       required: true
-    },
-    errorsBag: {
-      type: Object,
-      required: true,
     }
   },
   data() {
@@ -23,15 +19,11 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.form = this.stepForm;
-    this.errors = this.errorsBag;
+    this.form = this.data;
   },
   computed: {},
   methods: {
-    onBack() {
-      this.$emit('on-back', this.form);
-    },
-    async onSubmit(event) {
+    /*async onSubmit(event) {
       event.preventDefault();
       const payload = {
         email: this.step1.email,
@@ -44,28 +36,13 @@ export default defineComponent({
       console.log (this.step1);
       console.log (this.step2);
       console.log (this.step3);
-    }
+    }*/
   }
 })
 </script>
 
 <template>
   <div class="ipsc-signin-form4">
-    <UButton
-      icon="i-heroicons-chevron-left-16-solid"
-      size="md"
-      color="secondary"
-      variant="solid"
-      label="Back"
-      class="w-full mb-2 justify-center cursor-pointer"
-      @click="onBack"/>
-    <UButton
-      size="md"
-      color="secondary"
-      variant="solid"
-      type="submit"
-      label="Create account"
-      class="block w-full cursor-pointer"
-      @click="onSubmit($event)"/>
+    <!-- Display all the data -->
   </div>
 </template>

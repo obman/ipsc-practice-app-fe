@@ -1,13 +1,8 @@
 <script lang="ts">
 export default defineComponent({
   props: {
-    stepForm: {
+    data: {
       type: Object,
-      required: true
-    },
-    errorsBag: {
-      type: Object,
-      required: true,
     }
   },
   data() {
@@ -23,8 +18,7 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.form = this.stepForm;
-    this.errors = this.errorsBag;
+    this.form = this.data;
   },
   computed: {
     isEmailEmpty() {
@@ -49,12 +43,6 @@ export default defineComponent({
       const usernameSuccess = this.isUsernameEmpty && this.isUsernameUnique;
 
       return !(!emailSuccess || !usernameSuccess);
-    },
-    onNext() {
-      if (!this.validateForm()) {
-        return false;
-      }
-      this.$emit('on-next', this.form);
     }
   }
 })
@@ -92,16 +80,5 @@ export default defineComponent({
         class="w-full" />
       <span class="errors username-error text-danger">{{ errors.username }}</span>
     </label>
-
-    <div class="flex justify-end">
-      <UButton
-        icon="i-heroicons-chevron-right-16-solid"
-        size="md"
-        color="secondary"
-        label="Next"
-        class="ml-1 cursor-pointer"
-        trailing
-        @click="onNext"/>
-    </div>
   </div>
 </template>

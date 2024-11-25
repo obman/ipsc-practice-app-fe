@@ -1,13 +1,9 @@
 <script lang="ts">
 export default defineComponent({
   props: {
-    stepForm: {
+    data: {
       type: Object,
       required: true
-    },
-    errorsBag: {
-      type: Object,
-      required: true,
     }
   },
   data() {
@@ -23,8 +19,7 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.form = this.stepForm;
-    this.errors = this.errorsBag;
+    this.form = this.data;
   },
   computed: {
     isFirstNameEmpty() {
@@ -49,15 +44,6 @@ export default defineComponent({
       const successSurname = this.isLastNameEmpty && this.isLastNameUnique;
 
       return !(!successName || !successSurname);
-    },
-    onBack() {
-      this.$emit('on-back', this.form);
-    },
-    onNext() {
-      if (!this.validateForm()) {
-        return false;
-      }
-      this.$emit('on-next', this.form);
     }
   }
 })
@@ -96,23 +82,5 @@ export default defineComponent({
         required/>
       <span class="errors last-name-error text-danger">{{ errors.lastName }}</span>
     </label>
-
-    <UButtonGroup
-      size="md"
-      class="justify-end w-full">
-      <UButton
-        icon="i-heroicons-chevron-left-16-solid"
-        color="secondary"
-        label="Back"
-        class="mr-1"
-        @click="onBack"/>
-      <UButton
-        icon="i-heroicons-chevron-right-16-solid"
-        color="secondary"
-        label="Next"
-        class="ml-1 cursor-pointer"
-        trailing
-        @click="onNext"/>
-    </UButtonGroup>
   </div>
 </template>
