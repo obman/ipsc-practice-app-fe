@@ -1,12 +1,13 @@
 <script>
 export default defineComponent({
   props: {
-    activeStep: {
-      type: Number,
+    status: {
+      type: String,
+      default: 'inactive',
       required: true
     },
     step: {
-      type: String,
+      type: Number,
       required: true
     },
     label: {
@@ -16,14 +17,32 @@ export default defineComponent({
     isLast: {
       type: Boolean,
       default: false,
-    },
-    labelPosition: {
-      type: String
     }
   },
   computed: {
-    stepNumber() {
-      return parseInt(this.step);
+    statusClass() {
+      return {
+        'bg-primary text-white': this.status === 'active' || this.status === 'completed',
+        'bg-slate-300 text-content': this.status === 'inactive'
+      }
+    },
+    labelClass() {
+      return {
+        'text-primary': this.status === 'active',
+        'text-slate-300': this.status === 'inactive' || this.status === 'completed'
+      }
+    },
+    lineClass() {
+      return {
+        'bg-primary': this.status === 'active' || this.status === 'completed',
+        'bg-slate-300': this.status === 'inactive'
+      }
+    },
+    sndLineClass() {
+      return {
+        'bg-slate-300': this.status === 'active' || this.status === 'inactive',
+        'bg-primary': this.status === 'completed'
+      }
     }
   }
 });
@@ -34,13 +53,13 @@ export default defineComponent({
       <div class="relative text-center">
         <span
           class="flex justify-center items-center w-10 h-10 mb-8 rounded-full"
-          :class="{'bg-primary text-white': activeStep >= stepNumber, 'bg-slate-300 text-content': activeStep < stepNumber}"
+          :class="statusClass"
         >
           {{ step }}
         </span>
         <strong
           class="ipsc-step-label absolute left-0 bottom-[-25%] w-[11.375rem] text-center translate-gpu"
-          :class="{'text-primary': activeStep === stepNumber, 'text-slate-300': activeStep !== stepNumber}">
+          :class="labelClass">
           {{ label }}
         </strong>
       </div>
@@ -50,10 +69,10 @@ export default defineComponent({
         class="process-bar-line flex justify-center items-center w-28 h-2 mr-4 mb-8 ml-4">
         <span
           class="w-1/2 h-full rounded-tl-md rounded-bl-md"
-          :class="{'bg-primary': activeStep >= stepNumber, 'bg-slate-300': activeStep < stepNumber}"></span>
+          :class="lineClass"></span>
         <span
           class="w-1/2 h-full rounded-tr-md rounded-br-md"
-          :class="{'bg-primary': activeStep > stepNumber, 'bg-slate-300': activeStep <= stepNumber}"></span>
+          :class="sndLineClass"></span>
       </div>
     </div>
   </div>
