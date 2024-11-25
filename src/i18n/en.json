@@ -13,6 +13,12 @@
     "logout": "Log Out"
   },
   "signin": {
+    "progress_bar": {
+      "step0": "Step 0",
+      "step1": "Step 1",
+      "step2": "Step 2",
+      "step3": "Register"
+    },
     "infotext": {
       "step1": "Step 1"
     },
